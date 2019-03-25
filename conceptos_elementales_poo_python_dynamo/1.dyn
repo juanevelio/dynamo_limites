@@ -1,0 +1,85 @@
+{
+  "Uuid": "27293cf0-4bbe-43c7-b703-80aa27d0e1b0",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "1",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Activar la compatibilidad con Python y cargar biblioteca de DesignScript\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Las entradas de este nodo se almacenan como lista en las variables IN.\r\nclass Persona():\r\n\r\n\t\t\r\n    def __init__(self, nombre, nacionalidad):\r\n    \tself.nombre=nombre\r\n    \tself.nacionalidad=nacionalidad\r\n    edad = 18\t# aqui edad es una variable de clase y nombre es variable de instancia\r\n    \t\t\t# las variables de clase solo me deja declarar debajo de los metodos en Py script\r\np1=Persona(\"pedro\", \"paraguay\") \r\n \r\nOUT = [p1.nombre,Persona.edad]",
+      "VariableInputPorts": true,
+      "Id": "5844daf734134844a2931c5d8ed778a5",
+      "Inputs": [
+        {
+          "Id": "23f24ae7afa14aebb418fb2884582043",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "34397e4cfd7d47fb95e37f389ff07651",
+          "Name": "OUT",
+          "Description": "Resultado de la secuencia de comandos de Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ejecuta una secuencia de comandos de IronPython incrustada"
+    }
+  ],
+  "Connectors": [],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.2.6826",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Vista preliminar en segundo plano",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "5844daf734134844a2931c5d8ed778a5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 756.5,
+        "Y": 393.0
+      }
+    ],
+    "Annotations": [],
+    "X": -323.726779977507,
+    "Y": -192.41456729869066,
+    "Zoom": 0.8887892282971559
+  }
+}

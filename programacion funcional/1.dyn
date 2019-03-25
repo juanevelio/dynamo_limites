@@ -1,0 +1,211 @@
+{
+  "Uuid": "9911c7db-9c2a-4df9-bf15-45acc113dcd5",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "1",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Activar la compatibilidad con Python y cargar biblioteca de DesignScript\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n# Las entradas de este nodo se almacenan como lista en las variables IN.\r\npath = IN[1]\r\nlista = IN[0]\r\nfrom path import*\r\ndef suma(x,y):\r\n\treturn x+y\r\n\t\r\nsumar= reduce(suma,lista)\r\nOUT = sumar",
+      "VariableInputPorts": true,
+      "Id": "cb1e970b9cce4265b47a31976b11275e",
+      "Inputs": [
+        {
+          "Id": "20a4fdffadbf4907b4e1adb64dd74b1a",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2e2ff81fb6544f89b11456ba40cbcb27",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "392af9a55424407f8662f23fcde437be",
+          "Name": "OUT",
+          "Description": "Resultado de la secuencia de comandos de Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ejecuta una secuencia de comandos de IronPython incrustada"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[0..10..1];",
+      "Id": "ebbf7ffce1e84c74a82b684f50d11ce2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "29afdf7391c4442a8a587b7d63deabe6",
+          "Name": "",
+          "Description": "Valor de la expresión en la línea 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Permite creación directa de código de DesignScript"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "E:\\python_scripts_Dyn\\programacion funcional\\functools.py",
+      "InputValue": ".\\functools.py",
+      "NodeType": "ExtensionNode",
+      "Id": "ae6b5659a41b4945983596f5b9fa57d0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "39e7d00993bf47c68d7ad2eed70e19c9",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Permite seleccionar un archivo del sistema para obtener su nombre de archivo"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.ReadText@var",
+      "Id": "d472a9d8bddb405aa0579d0c8c8b0470",
+      "Inputs": [
+        {
+          "Id": "8f3a910c08be42368277edec1ee8b85e",
+          "Name": "file",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8b7b41b921924a79b0fbdb4c2d54c1ae",
+          "Name": "str",
+          "Description": "Contenido del archivo de texto.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Lee un archivo de texto y devuelve el contenido como una cadena.\n\nFileSystem.ReadText (file: var): string"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "29afdf7391c4442a8a587b7d63deabe6",
+      "End": "20a4fdffadbf4907b4e1adb64dd74b1a",
+      "Id": "6028849eef5c4ab29303923e2fce2bbe"
+    },
+    {
+      "Start": "39e7d00993bf47c68d7ad2eed70e19c9",
+      "End": "8f3a910c08be42368277edec1ee8b85e",
+      "Id": "aea93144ef0e4ba0a38dd63fc2d5528c"
+    },
+    {
+      "Start": "8b7b41b921924a79b0fbdb4c2d54c1ae",
+      "End": "2e2ff81fb6544f89b11456ba40cbcb27",
+      "Id": "c5f0f7033f0842a0902ac41e34c07038"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.2.6826",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Vista preliminar en segundo plano",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "cb1e970b9cce4265b47a31976b11275e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 594.24594120358529,
+        "Y": 134.0665874433154
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "ebbf7ffce1e84c74a82b684f50d11ce2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 311.89283875061693,
+        "Y": 64.053580624691577
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "ae6b5659a41b4945983596f5b9fa57d0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 57.764754803248195,
+        "Y": 110.80446343147408
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "FileSystem.ReadText",
+        "Id": "d472a9d8bddb405aa0579d0c8c8b0470",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 298.3044911008966,
+        "Y": 424.82319698431183
+      }
+    ],
+    "Annotations": [],
+    "X": 513.23291138034392,
+    "Y": 31.996606094997446,
+    "Zoom": 0.98854889960476888
+  }
+}

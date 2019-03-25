@@ -1,0 +1,85 @@
+{
+  "Uuid": "27293cf0-4bbe-43c7-b703-80aa27d0e1b0",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "9_instrospeccion_de_objetos_en_python",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Activar la compatibilidad con Python y cargar biblioteca de DesignScript\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n#los metodos especiales son los que tienen dos guiones bajos como el init\r\nclass Introspeccion():\r\n\r\n\tdef __init__(self,valor):\r\n\t\tself.valor=valor\r\n\tdef dos(self):\r\n\t\treturn \"dos=2\"\r\n\tdef tres(self):\r\n\t\treturn \"tres=3\"\r\n\tintrover=9\r\ndato = Introspeccion(\"valor\")\r\n\t\r\nlo_que_tengo = dir(dato) #para saber mas de la clase intro, todas las instancias\r\nbool1=isinstance(dato,Introspeccion)#preguntamos si una variable (dato) es instancia de una clase, en este caso true\r\nbool2=hasattr(dato,\"introver\") # preguntamos si la instancia dato posee el atributo introver\r\nOUT = [lo_que_tengo,bool1, bool2 ]",
+      "VariableInputPorts": true,
+      "Id": "7cb52a909c434d1982a1c5e1adc0c95d",
+      "Inputs": [
+        {
+          "Id": "ebabdcbd6f2a4eeaae007fd9e316204e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "777e903ce29141a59eb239d1a9b97689",
+          "Name": "OUT",
+          "Description": "Resultado de la secuencia de comandos de Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ejecuta una secuencia de comandos de IronPython incrustada"
+    }
+  ],
+  "Connectors": [],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.2.6826",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Vista preliminar en segundo plano",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "7cb52a909c434d1982a1c5e1adc0c95d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 443.0,
+        "Y": 79.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

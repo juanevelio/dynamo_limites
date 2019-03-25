@@ -1,0 +1,85 @@
+{
+  "Uuid": "b97a7e56-02f2-45e4-aaf4-bb70f5228d04",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "crear_hilos",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Activar la compatibilidad con Python y cargar biblioteca de DesignScript\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport threading #hilos\r\nimport time\r\n\r\nclass MiHilo(threading.Thread):\r\n\tdef run(self):  #run ya viene con hilos\r\n\t\treturn \"{} inicio\".format(self.getName())\r\n\t\ttime.sleep(1)\r\n\t\treturn \"{} terminado\".format(self.getName()) \r\n\r\nif __name__==\"__main__\":\r\n\tfor x in range(4):\r\n\t\thilo=MiHilo(name=\"Thread-{}\".format(x+1))\r\n\t\thilo.start()\r\n\t\ttime.sleep(0.5)\r\n\r\nOUT = MiHilo ",
+      "VariableInputPorts": true,
+      "Id": "c9b565e8d8c6493ca7c119321fb5187b",
+      "Inputs": [
+        {
+          "Id": "0b11be7d205f4a33817e8f0771a1837d",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "94a63003b79c49ab942ba8a101f9ca93",
+          "Name": "OUT",
+          "Description": "Resultado de la secuencia de comandos de Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ejecuta una secuencia de comandos de IronPython incrustada"
+    }
+  ],
+  "Connectors": [],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.2.6826",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Vista preliminar en segundo plano",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "c9b565e8d8c6493ca7c119321fb5187b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 504.0,
+        "Y": 248.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

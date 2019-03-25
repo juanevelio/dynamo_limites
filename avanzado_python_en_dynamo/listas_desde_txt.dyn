@@ -1,0 +1,130 @@
+{
+  "Uuid": "0d2ac5ea-d5b5-41e3-b21d-68a01ee13e8d",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "listas_desde_txt",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Activar la compatibilidad con Python y cargar biblioteca de DesignScript\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n\r\nciudad=[]\r\nfor linea in open(\"./lista.txt\"):\r\n\tciudad.append(linea + \" - central\")\r\nOUT = [ciudad]",
+      "VariableInputPorts": true,
+      "Id": "b44645b830b9488f935efe7b81189e7d",
+      "Inputs": [
+        {
+          "Id": "08e91a2ce1664111b477c9bf1d22e580",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1d9f5f29aa9145229ee073183eb74f43",
+          "Name": "OUT",
+          "Description": "Resultado de la secuencia de comandos de Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ejecuta una secuencia de comandos de IronPython incrustada"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "63666877dffa4f07adf5c33ee6470d21",
+      "Inputs": [
+        {
+          "Id": "55d49bf7be674ea4bc9994087c396e3b",
+          "Name": "",
+          "Description": "Nodo que evaluar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4803cfbe33194dff82352b6bd64fd360",
+          "Name": "",
+          "Description": "Visualiza el contenido",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualiza la salida de nodo"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "1d9f5f29aa9145229ee073183eb74f43",
+      "End": "55d49bf7be674ea4bc9994087c396e3b",
+      "Id": "07d34eb025384b8ba0e1f6d20284abfe"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.2.6826",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Vista preliminar en segundo plano",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "b44645b830b9488f935efe7b81189e7d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 184.0,
+        "Y": 91.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "63666877dffa4f07adf5c33ee6470d21",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 446.0,
+        "Y": 94.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
